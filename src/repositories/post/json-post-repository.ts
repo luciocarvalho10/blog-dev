@@ -7,7 +7,14 @@ const LOCAL_DIR = process.cwd();
 const ROOT_DIR = resolve(LOCAL_DIR, '..', '..', '..');
 const JSON_POSTS_FILE_PATH = resolve(ROOT_DIR, 'src', 'db', 'seed', 'posts.json')
 
+const SIMULATE_WAIT_TIME_IN_MS = 0;
 export class PostRepository implements IPostRepository {
+    private async simulateWait() {
+        if (SIMULATE_WAIT_TIME_IN_MS <= 0) return;
+
+        await new Promise(resolve => setTimeout(resolve, SIMULATE_WAIT_TIME_IN_MS));
+    }
+
     private async readFromDisk() {
         const jsonContent = await readFile(JSON_POSTS_FILE_PATH, 'utf-8');
         const parsedJsonContent = JSON.parse(jsonContent);
@@ -16,6 +23,7 @@ export class PostRepository implements IPostRepository {
     }
 
     async findAll(): Promise<TPostModel[]> {
+        await this.simulateWait()
         return await this.readFromDisk()
     }
 
