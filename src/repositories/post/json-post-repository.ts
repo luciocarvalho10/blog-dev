@@ -3,8 +3,7 @@ import { IPostRepository } from "@/repositories/post/post-repository";
 import { resolve } from "path"
 import { readFile } from "fs/promises";
 
-const LOCAL_DIR = process.cwd();
-const ROOT_DIR = resolve(LOCAL_DIR, '..', '..', '..');
+const ROOT_DIR = process.cwd();
 const JSON_POSTS_FILE_PATH = resolve(ROOT_DIR, 'src', 'db', 'seed', 'posts.json')
 
 const SIMULATE_WAIT_TIME_IN_MS = 0;
