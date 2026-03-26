@@ -1,9 +1,13 @@
 import {PostCoverImage} from "@/components/PostCoverImage";
 import {PostSummary} from "@/components/PostSummary";
+import {DTOPostSummary} from "@/dto/post/DTOPostSummary";
+import {findAllPublicPosts} from "@/lib/post/queries";
 
-export function PostFeatured() {
-    const slug = 'post-featured'
-    const postLink = `/post/${slug}`
+export async function PostFeatured() {
+    const posts = await findAllPublicPosts();
+    const post = posts[0];
+    const postLink = `/post/${post.slug}`
+    const postToSummary = new DTOPostSummary(post);
 
     return (
         <section className="grid grid-cols-1 gap-8 mb-16 sm:grid-cols-2 group">
@@ -13,8 +17,8 @@ export function PostFeatured() {
                     href: postLink,
                 }}
                 imageProps={{
-                    alt:'Título Post',
-                    src:'/images/bryen_0.png',
+                    alt:post.title,
+                    src:post.coverImageUrl,
                     width:1200,
                     height:720,
                     priority:true,
@@ -24,11 +28,7 @@ export function PostFeatured() {
             <PostSummary
                 postLink={postLink}
                 postHeadingType='h2'
-                post={{
-                    title: 'Crescer faz parte da vida.',
-                    createdAt: '2026-03-19',
-                    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam assumenda consectetur dicta ducimus ea earum error fuga harum laudantium nemo, officia, quidem quod quos repudiandae sint tempora voluptas voluptates, voluptatibus.',
-                }}
+                post={postToSummary}
             />
 
         </section >

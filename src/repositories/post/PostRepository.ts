@@ -7,6 +7,7 @@ const ROOT_DIR = process.cwd();
 const JSON_POSTS_FILE_PATH = resolve(ROOT_DIR, 'src', 'db', 'seed', 'posts.json')
 
 const SIMULATE_WAIT_TIME_IN_MS = 0;
+
 export class PostRepository implements IPostRepository {
     private async simulateWait() {
         if (SIMULATE_WAIT_TIME_IN_MS <= 0) return;
@@ -21,13 +22,16 @@ export class PostRepository implements IPostRepository {
         return posts
     }
 
-    async findAll(): Promise<TPostModel[]> {
+    async findAllPublic(): Promise<TPostModel[]> {
         await this.simulateWait()
-        return await this.readFromDisk()
+
+        const posts = await this.readFromDisk()
+
+        return posts.filter((post: TPostModel) => post.published)
     }
 
     async findById(id: string): Promise<TPostModel> {
-        const posts = await this.findAll()
+        const posts = await this.findAllPublic()
         const post = posts.find(post => post.id === id)
 
         if(!post) throw new Error('Post não encontrado')
