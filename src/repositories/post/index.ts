@@ -1,4 +1,4 @@
-import { IPostRepository } from "@/repositories/post/post-repository";
-import { PostRepository } from "@/repositories/post/json-post-repository";
+import { IPostRepository } from "@/repositories/post/IPostRepository";
+import { PostRepository } from "@/repositories/post/PostRepository";
 
 export const postRepository: IPostRepository = new PostRepository();

@@ -1,5 +1,5 @@
 import {PostCoverImage} from "@/components/PostCoverImage";
-import {PostHeading} from "@/components/PostHeading";
+import {PostSummary} from "@/components/PostSummary";
 
 export function PostFeatured() {
     const slug = 'post-featured'
@@ -21,29 +21,16 @@ export function PostFeatured() {
                 }}
             />
 
-            <div className='flex flex-col gap-4 justify-center'>
-                <time
-                    className='text-slate-600 block text-sm/tight'
-                    dateTime='2026-03-19'
-                >
-                    Dev Blog - 19/03/2026 20:15
-                </time >
+            <PostSummary
+                postLink={postLink}
+                postHeadingType='h2'
+                post={{
+                    title: 'Crescer faz parte da vida.',
+                    createdAt: '2026-03-19',
+                    excerpt: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam assumenda consectetur dicta ducimus ea earum error fuga harum laudantium nemo, officia, quidem quod quos repudiandae sint tempora voluptas voluptates, voluptatibus.',
+                }}
+            />
 
-                <PostHeading
-                    as='h1'
-                    url={postLink}
-                >
-                    Aliquam assumenda consectetur dicta
-                    ducimus ea earum error fuga harum laudantium nemo, officia, quidem quod quos repudiandae sint
-                    tempora voluptas voluptates, voluptatibus.
-                </PostHeading >
-
-                <p >
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam assumenda consectetur dicta
-                    ducimus ea earum error fuga harum laudantium nemo, officia, quidem quod quos repudiandae sint
-                    tempora voluptas voluptates, voluptatibus.
-                </p >
-            </div >
         </section >
     );
 }

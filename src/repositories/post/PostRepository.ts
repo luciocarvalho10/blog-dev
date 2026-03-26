@@ -1,5 +1,5 @@
-import { TPostModel } from "@/models/post/post-models";
-import { IPostRepository } from "@/repositories/post/post-repository";
+import { TPostModel } from "@/models/post/TPostModel";
+import { IPostRepository } from "@/repositories/post/IPostRepository";
 import { resolve } from "path"
 import { readFile } from "fs/promises";
 

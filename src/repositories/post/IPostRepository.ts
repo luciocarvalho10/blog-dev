@@ -1,4 +1,4 @@
-import { TPostModel } from "@/models/post/post-models";
+import { TPostModel } from "@/models/post/TPostModel";
 
 export interface IPostRepository {
     findAll(): Promise<TPostModel[]>
