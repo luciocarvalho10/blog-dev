@@ -1,6 +1,6 @@
 import {PostCoverImage} from "@/components/PostCoverImage";
 import {PostSummary} from "@/components/PostSummary";
-import {TPostSummary} from "@/dto/post/TPostSummary";
+import {TPostSummary} from "@/models/post/TPostSummary";
 import {DTOPostSummary} from "@/dto/post/DTOPostSummary";
 import {findAllPublicPosts} from "@/lib/post/queries";
 
@@ -8,7 +8,7 @@ export async function PostsList() {
     const posts = await findAllPublicPosts();
 
     return (
-        <div className={'grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3'}>
+        <div className={'grid grid-cols-1 mb-16 gap-8 sm:grid-cols-2 md:grid-cols-3'}>
             {
                 posts.slice(1).map(post => {
                     const postLink = `/post/${post.slug}`
@@ -28,6 +28,7 @@ export async function PostsList() {
                                     src: post.coverImageUrl,
                                     width: 1200,
                                     height: 720,
+                                    loading: 'eager',
                                 }}
                             />
 

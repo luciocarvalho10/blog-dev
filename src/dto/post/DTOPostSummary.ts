@@ -1,4 +1,4 @@
-import {TPostSummary} from "@/dto/post/TPostSummary";
+import {TPostSummary} from "@/models/post/TPostSummary";
 import {TPostModel} from "@/models/post/TPostModel";
 
 export class DTOPostSummary implements TPostSummary {

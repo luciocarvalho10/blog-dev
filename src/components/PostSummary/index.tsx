@@ -1,6 +1,6 @@
 import {PostHeading} from "@/components/PostHeading";
 import {formatDistanceToNow, formatDateTime} from "@/utils/format-datetime";
-import {TPostSummary} from "@/dto/post/TPostSummary";
+import {TPostSummary} from "@/models/post/TPostSummary";
 
 type PostSummaryProps = {
     postLink: string;

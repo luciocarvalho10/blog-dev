@@ -22,6 +22,7 @@ export async function PostFeatured() {
                     width:1200,
                     height:720,
                     priority:true,
+                    loading:'eager',
                 }}
             />
 
