@@ -2,10 +2,10 @@ import {PostCoverImage} from "@/components/PostCoverImage";
 import {PostSummary} from "@/components/PostSummary";
 import {TPostSummary} from "@/models/post/TPostSummary";
 import {DTOPostSummary} from "@/dto/post/DTOPostSummary";
-import {findAllPublicPosts} from "@/lib/post/queries";
+import {findAllPublicPostsCached} from "@/lib/post/queries";
 
 export async function PostsList() {
-    const posts = await findAllPublicPosts();
+    const posts = await findAllPublicPostsCached();
 
     return (
         <div className={'grid grid-cols-1 mb-16 gap-8 sm:grid-cols-2 md:grid-cols-3'}>
