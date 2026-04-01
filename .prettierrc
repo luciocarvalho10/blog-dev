@@ -1,7 +1,18 @@
 {
-  "plugins": ["prettier-plugin-tailwindcss"],
-  "tailwindFunctions": ["clsx"],
+  "plugins": [
+    "prettier-plugin-tailwindcss"
+  ],
+  "tailwindFunctions": [
+    "clsx"
+  ],
   "printWidth": 80,
   "singleQuote": true,
-  "endOfLine": "lf"
+  "endOfLine": "lf",
+  "insert_final_newline": true,
+  "trim_trailing_whitespace": true,
+  "tabWidth": 1,
+  "bracketSameLine": true,
+  "bracketSpacing": true,
+  "editorconfig": true,
+  "useTabs": true
 }
