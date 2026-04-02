@@ -1,7 +1,9 @@
+import {ReactNode} from "react";
+
 type ErrorMessageProps = {
     pageTitle: string;
     contentTitle: string;
-    content: string;
+    content: ReactNode;
 }
 
 export default function ErrorMessage({ pageTitle, contentTitle, content }: ErrorMessageProps) {
