@@ -1,52 +1,67 @@
-import { TPostModel } from "@/models/post/TPostModel";
-import { IPostRepository } from "@/repositories/post/IPostRepository";
-import { resolve } from "path"
-import { readFile } from "fs/promises";
+import { TPostModel } from '@/models/post/TPostModel';
+import { IPostRepository } from '@/repositories/post/IPostRepository';
 
-const ROOT_DIR = process.cwd();
-const JSON_POSTS_FILE_PATH = resolve(ROOT_DIR, 'src', 'db', 'seed', 'posts.json')
+import { readFile } from 'fs/promises';
+import { resolve } from 'path';
+
+const pathFile = process.cwd()
+// console.log('post', pathFile)
+// const srcIndex = pathFile.lastIndexOf('src');
+// const root = pathFile.slice(0,srcIndex)
+const JSON_POSTS_FILE_PATH = resolve(pathFile + '/src/db/seed/posts.json');
 
 const SIMULATE_WAIT_TIME_IN_MS = 0;
 
 export class PostRepository implements IPostRepository {
-    private async simulateWait() {
-        if (SIMULATE_WAIT_TIME_IN_MS <= 0) return;
+ private async simulateWait() {
+  if (SIMULATE_WAIT_TIME_IN_MS <= 0) return;
 
-        await new Promise(resolve => setTimeout(resolve, SIMULATE_WAIT_TIME_IN_MS));
-    }
+  await new Promise(resolve => setTimeout(resolve, SIMULATE_WAIT_TIME_IN_MS));
+ }
 
-    private async readFromDisk() {
-        const jsonContent = await readFile(JSON_POSTS_FILE_PATH, 'utf-8');
-        const parsedJsonContent = JSON.parse(jsonContent);
-        const {posts} = parsedJsonContent;
-        return posts
-    }
+ private async readFromDisk() {
+  const jsonContent = await readFile(JSON_POSTS_FILE_PATH, 'utf-8');
+  const parsedJsonContent = JSON.parse(jsonContent);
+  const { posts } = parsedJsonContent;
 
-    async findAllPublic(): Promise<TPostModel[]> {
-        await this.simulateWait()
+  return posts;
+ }
 
-        const posts = await this.readFromDisk()
+ async findAll(): Promise<TPostModel[]> {
+  await this.simulateWait();
 
-        return posts.filter((post: TPostModel) => post.published)
-    }
+  console.log('\n', 'findAll', '\n');
 
-    async findById(id: string): Promise<TPostModel> {
-        const posts = await this.findAllPublic()
-        const post = posts.find(post => post.id === id)
+  return await this.readFromDisk();
+ }
 
-        if(!post) throw new Error('Post não encontrado pelo ID!')
+ async findAllPublic(): Promise<TPostModel[]> {
+  await this.simulateWait();
 
-        return post
-    }
+  const posts = await this.readFromDisk();
 
-    async findBySlug(slug: string): Promise<TPostModel> {
-        const posts = await this.findAllPublic()
-        const post = posts.find(post => post.slug === slug)
+  console.log('\n', 'findAllPublic', '\n');
 
-        if(!post) throw new Error('Post não encontrado pelo slug')
+  return posts.filter((post: TPostModel) => post.published);
+ }
 
-        return post
-    }
+ async findById(id: string): Promise<TPostModel> {
+  const posts = await this.findAllPublic();
+  const post = posts.find(post => post.id === id);
+
+  if (!post) throw new Error('Post não encontrado pelo ID!');
+
+  return post;
+ }
+
+ async findBySlug(slug: string): Promise<TPostModel> {
+  const posts = await this.findAllPublic();
+  const post = posts.find(post => post.slug === slug);
+
+  if (!post) throw new Error('Post não encontrado pelo slug');
+
+  return post;
+ }
 }
 
 export const postRepository: IPostRepository = new PostRepository();
