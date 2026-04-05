@@ -8,7 +8,7 @@
   "endOfLine": "lf",
   "insert_final_newline": true,
   "trim_trailing_whitespace": true,
-  "tabWidth": 1,
+  "tabWidth": 2,
   "bracketSameLine": true,
   "arrowParens": "avoid",
   "bracketSpacing": true,

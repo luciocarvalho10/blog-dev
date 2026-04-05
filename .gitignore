@@ -1,5 +1,38 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# Covers JetBrains IDEs: IntelliJ, WebStorm, PhpStorm, etc.
+
+# User-specific stuff
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/shelf
+
+# Generated files
+.idea/httpRequests
+.idea/dataSources/
+.idea/dataSources.ids
+.idea/dataSources.local.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+
+# Sensitive or temporary
+.idea/usage.statistics.xml
+.idea/deployment.xml
+.idea/deploymentTargetDropHistory.xml
+
+# Ignore all .idea content except project configs
+.idea/*
+!.idea/modules.xml
+!.idea/misc.xml
+!.idea/vcs.xml
+!.idea/jsLibraryMappings.xml
+
+
+# DataBase
+db.sqlite3
+
 # dependencies
 /node_modules
 /.pnp
@@ -39,3 +72,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
