@@ -14,7 +14,7 @@ export default function RootErrorPage({error}: RootErrorProps) {
     }, [error]);
 
     const pageTitle = document.querySelector('title')?.title || 'Error';
-    const content = 'Ocorreu um erro inesperado. Tente npvamente mais tarde!'
+    const content = 'Ocorreu um erro inesperado. Tente novamente mais tarde!'
 
     return (
         <ErrorMessage
