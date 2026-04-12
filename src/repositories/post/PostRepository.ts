@@ -54,7 +54,7 @@ export class PostRepository implements IPostRepository {
   return post;
  }
 
- async findBySlug(slug: string): Promise<TPostModel> {
+ async findBySlugPublic(slug: string): Promise<TPostModel> {
   const posts = await this.findAllPublic();
   const post = posts.find(post => post.slug === slug);
 
